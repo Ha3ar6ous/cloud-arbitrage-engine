@@ -1,16 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import ProviderTable from '../components/ProviderTable';
 import CostChart from '../components/CostChart';
+import { AuthContext } from '../context/AuthContext';
+import pricingData from '../data/pricingData.json';
 
 const DashboardPage = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchComparisonData = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/compare');
+        const response = await fetch('http://localhost:5000/api/compare', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-username': user
+          },
+          body: JSON.stringify({ pricingData })
+        });
         if (!response.ok) {
           throw new Error('Failed to fetch comparison data');
         }
@@ -23,8 +33,10 @@ const DashboardPage = () => {
       }
     };
 
-    fetchComparisonData();
-  }, []);
+    if (user) {
+      fetchComparisonData();
+    }
+  }, [user]);
 
   return (
     <div className="page-container dashboard-page">

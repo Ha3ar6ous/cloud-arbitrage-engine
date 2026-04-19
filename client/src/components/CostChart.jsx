@@ -8,7 +8,7 @@ const CostChart = ({ data }) => {
 
   return (
     <div className="chart-container">
-      <h3>Estimated Costs Comparison</h3>
+      <h3>Estimated Monthly Costs Comparison (₹)</h3>
       <div className="bar-chart">
         {data.map((item) => {
           const heightPercentage = (item.totalCost / maxCost) * 100;
@@ -19,7 +19,7 @@ const CostChart = ({ data }) => {
                   className="bar" 
                   style={{ height: `${heightPercentage}%` }}
                 >
-                  <span className="bar-value">${item.totalCost.toFixed(2)}</span>
+                  <span className="bar-value">₹{item.totalCost.toFixed(0)}</span>
                 </div>
               </div>
               <span className="bar-label">{item.provider}</span>

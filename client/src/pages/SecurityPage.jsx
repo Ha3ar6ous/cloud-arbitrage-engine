@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import RiskPanel from '../components/RiskPanel';
+import { AuthContext } from '../context/AuthContext';
 
 const SecurityPage = () => {
   const [inputs, setInputs] = useState({
-    region: 'us-east-1',
+    region: 'ap-south-1', // Default to India
     provider: 'AWS',
     dataSensitivity: 'low',
     isPublic: true
@@ -11,6 +12,7 @@ const SecurityPage = () => {
 
   const [riskData, setRiskData] = useState(null);
   const [loading, setLoading] = useState(false);
+  const { user } = useContext(AuthContext);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -26,7 +28,10 @@ const SecurityPage = () => {
       try {
         const response = await fetch('http://localhost:5000/api/security', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 
+            'Content-Type': 'application/json',
+            'x-username': user
+          },
           body: JSON.stringify(inputs)
         });
         const data = await response.json();
@@ -38,12 +43,14 @@ const SecurityPage = () => {
       }
     };
 
-    const timer = setTimeout(() => {
-      fetchSecurityInsights();
-    }, 500);
+    if (user) {
+      const timer = setTimeout(() => {
+        fetchSecurityInsights();
+      }, 500);
 
-    return () => clearTimeout(timer);
-  }, [inputs]);
+      return () => clearTimeout(timer);
+    }
+  }, [inputs, user]);
 
   return (
     <div className="page-container security-page">

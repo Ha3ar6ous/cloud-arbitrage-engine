@@ -1,23 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import InputForm from '../components/InputForm';
 import ResultCard from '../components/ResultCard';
+import { AuthContext } from '../context/AuthContext';
+import pricingData from '../data/pricingData.json';
 
 const SimulatorPage = () => {
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const { user } = useContext(AuthContext);
 
   const handleSimulate = async (formData) => {
     setLoading(true);
     setError('');
     
     try {
+      const payload = {
+        ...formData,
+        pricingData // Send to backend to perform calculation
+      };
+
       const response = await fetch('http://localhost:5000/api/simulate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'x-username': user
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(payload),
       });
 
       if (!response.ok) {

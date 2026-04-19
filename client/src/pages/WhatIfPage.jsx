@@ -1,16 +1,20 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
+import { AuthContext } from '../context/AuthContext';
+import { MdTrendingUp, MdTrendingDown, MdTrendingFlat } from 'react-icons/md';
+import pricingData from '../data/pricingData.json';
 
 const WhatIfPage = () => {
   const [inputs, setInputs] = useState({
     traffic: 1000,
     scaling: false,
-    region: 'us-east-1',
+    region: 'ap-south-1',
     instanceType: 'standard'
   });
 
   const [results, setResults] = useState([]);
   const previousResultsRef = useRef({});
   const [loading, setLoading] = useState(false);
+  const { user } = useContext(AuthContext);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -24,14 +28,21 @@ const WhatIfPage = () => {
     const fetchWhatIf = async () => {
       setLoading(true);
       try {
+        const payload = {
+          ...inputs,
+          pricingData
+        };
+
         const response = await fetch('http://localhost:5000/api/whatif', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(inputs)
+          headers: { 
+            'Content-Type': 'application/json',
+            'x-username': user 
+          },
+          body: JSON.stringify(payload)
         });
         const data = await response.json();
         
-        // Store current results as previous before updating
         if (results.length > 0) {
           const prevMap = {};
           results.forEach(r => { prevMap[r.name] = r.cost; });
@@ -46,18 +57,20 @@ const WhatIfPage = () => {
       }
     };
 
-    const debounceTimer = setTimeout(() => {
-      fetchWhatIf();
-    }, 400); // 400ms debounce
+    if (user) {
+      const debounceTimer = setTimeout(() => {
+        fetchWhatIf();
+      }, 400);
 
-    return () => clearTimeout(debounceTimer);
-  }, [inputs]); // Effect runs on input change
+      return () => clearTimeout(debounceTimer);
+    }
+  }, [inputs, user]);
 
   const getTrendIcon = (providerName, currentCost) => {
     const prevCost = previousResultsRef.current[providerName];
-    if (!prevCost || prevCost === currentCost) return <span className="trend neutral">➖</span>;
-    if (currentCost > prevCost) return <span className="trend up" title="Cost increase">📈</span>;
-    return <span className="trend down" title="Cost decrease">📉</span>;
+    if (!prevCost || prevCost === currentCost) return <MdTrendingFlat className="trend neutral" />;
+    if (currentCost > prevCost) return <MdTrendingUp className="trend up" title="Cost increase" />;
+    return <MdTrendingDown className="trend down" title="Cost decrease" />;
   };
 
   return (
@@ -66,11 +79,11 @@ const WhatIfPage = () => {
       <p>Adjust parameters in real-time to see how dynamic events impact provider costs.</p>
 
       <div className="simulator-grid">
-        <div className="left-panel input-form">
+        <div className="left-panel neo-box form-panel">
           <h3>Simulation Triggers</h3>
 
           <div className="form-group">
-            <label htmlFor="traffic">Traffic Level (Users): {inputs.traffic}</label>
+            <label htmlFor="traffic">Traffic Level (Users): <strong>{inputs.traffic}</strong></label>
             <input
               type="range"
               id="traffic"
@@ -112,20 +125,20 @@ const WhatIfPage = () => {
         </div>
 
         <div className="right-panel">
-          <div className="result-card">
+          <div className="neo-box result-card">
             <div className="result-header">
-              <h3>Live Cost Estimator</h3>
-              {loading && <span style={{fontSize: '0.8rem', color: '#666'}}>Updating...</span>}
+              <h3>Live Cost Estimator (INR)</h3>
+              {loading && <span className="loading-badge">Updating...</span>}
             </div>
             
             <div className="cost-breakdown whatif-results">
               <ul>
                 {results.map(provider => (
                   <li key={provider.name}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%'}}>
+                    <div className="whatif-row">
                       <strong>{provider.name}</strong> 
                       <span>
-                        ${provider.cost.toFixed(2)}{' '}
+                        ₹{provider.cost.toFixed(2)}{' '}
                         {getTrendIcon(provider.name, provider.cost)}
                       </span>
                     </div>

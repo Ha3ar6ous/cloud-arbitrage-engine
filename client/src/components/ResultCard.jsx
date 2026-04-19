@@ -13,11 +13,11 @@ const ResultCard = ({ result }) => {
       </div>
 
       <div className="cost-breakdown">
-        <h4>Cost Breakdown (Estimated Monthly)</h4>
+        <h4>Cost Breakdown (Estimated Monthly in ₹)</h4>
         <ul>
           {costBreakdown.map((item) => (
             <li key={item.provider} className={item.provider === bestProvider ? 'highlight' : ''}>
-              <strong>{item.provider}:</strong> ${item.estimatedCost.toFixed(2)}
+              <strong>{item.provider}:</strong> ₹{item.estimatedCost.toFixed(2)}
             </li>
           ))}
         </ul>

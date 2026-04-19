@@ -1,27 +1,27 @@
 import React from 'react';
+import { MdWarning, MdCheckCircle } from 'react-icons/md';
 
 const RiskPanel = ({ data, loading }) => {
   if (loading) {
-    return <div className="risk-panel loading">Analyzing security posture...</div>;
+    return <div className="risk-panel neo-box loading">Analyzing security posture...</div>;
   }
 
   if (!data) return null;
 
   const { riskScore, issues, recommendations } = data;
 
-  // Determine color based on risk score
-  let scoreColor = '#34a853'; // Green for low risk
+  let scoreColor = '#22c55e';
   let riskLevel = 'Low Risk';
   if (riskScore >= 40 && riskScore < 75) {
-    scoreColor = '#fbbc05'; // Yellow
+    scoreColor = '#eab308';
     riskLevel = 'Medium Risk';
   } else if (riskScore >= 75) {
-    scoreColor = '#ea4335'; // Red
+    scoreColor = '#ef4444';
     riskLevel = 'High Risk';
   }
 
   return (
-    <div className="risk-panel">
+    <div className="risk-panel neo-box">
       <div className="risk-header">
         <h3>Security & Reliability Audit</h3>
         <span className="audit-badge">Generated Live</span>
@@ -42,7 +42,7 @@ const RiskPanel = ({ data, loading }) => {
         ) : (
           <ul>
             {issues.map((issue, idx) => (
-              <li key={idx}><span className="icon-warning">⚠️</span> {issue}</li>
+              <li key={idx}><MdWarning className="icon-inline warning" /> {issue}</li>
             ))}
           </ul>
         )}
@@ -52,7 +52,7 @@ const RiskPanel = ({ data, loading }) => {
         <h4>Actionable Recommendations</h4>
         <ul>
           {recommendations.map((rec, idx) => (
-            <li key={idx}><span className="icon-check">✅</span> {rec}</li>
+            <li key={idx}><MdCheckCircle className="icon-inline success" /> {rec}</li>
           ))}
         </ul>
       </div>
