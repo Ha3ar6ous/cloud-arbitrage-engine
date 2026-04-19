@@ -381,3 +381,181 @@ body {
   margin-top: 0.5rem;
   font-weight: 500;
 }
+
+/* Switch Toggle CSS */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #0f9d58;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* Trends */
+.whatif-results li {
+  font-size: 1.1rem;
+}
+
+.trend {
+  font-size: 1rem;
+  margin-left: 0.5rem;
+}
+
+.trend.up {
+  color: #ea4335; /* red for cost increase */
+}
+
+.trend.down {
+  color: #34a853; /* green for cost decrease */
+}
+
+.trend.neutral {
+  opacity: 0.5;
+}
+
+/* Security & Reliability Risk Panel */
+.risk-panel {
+  padding: 1.5rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+  min-height: 100%;
+}
+
+.risk-panel.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-style: italic;
+  color: #666;
+}
+
+.risk-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.audit-badge {
+  background-color: #e8f0fe;
+  color: #1a73e8;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.score-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.score-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 8px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+}
+
+.score-value {
+  font-size: 3rem;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.score-max {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.risk-level {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.audit-section {
+  margin-bottom: 1.5rem;
+}
+
+.audit-section h4 {
+  margin-bottom: 0.75rem;
+  color: #202124;
+  font-size: 1.1rem;
+}
+
+.audit-section ul {
+  list-style-type: none;
+}
+
+.audit-section li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.audit-section li:last-child {
+  border-bottom: none;
+}
+
+.no-issues {
+  color: #34a853;
+  font-style: italic;
+}
+
+.mt-2 {
+  margin-top: 1rem;
+}
+
+

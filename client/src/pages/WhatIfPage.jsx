@@ -1,10 +1,141 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const WhatIfPage = () => {
+  const [inputs, setInputs] = useState({
+    traffic: 1000,
+    scaling: false,
+    region: 'us-east-1',
+    instanceType: 'standard'
+  });
+
+  const [results, setResults] = useState([]);
+  const previousResultsRef = useRef({});
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setInputs(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : (type === 'range' ? Number(value) : value)
+    }));
+  };
+
+  useEffect(() => {
+    const fetchWhatIf = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch('http://localhost:5000/api/whatif', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(inputs)
+        });
+        const data = await response.json();
+        
+        // Store current results as previous before updating
+        if (results.length > 0) {
+          const prevMap = {};
+          results.forEach(r => { prevMap[r.name] = r.cost; });
+          previousResultsRef.current = prevMap;
+        }
+
+        setResults(data.providers);
+      } catch (err) {
+        console.error('Error fetching what-if data:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    const debounceTimer = setTimeout(() => {
+      fetchWhatIf();
+    }, 400); // 400ms debounce
+
+    return () => clearTimeout(debounceTimer);
+  }, [inputs]); // Effect runs on input change
+
+  const getTrendIcon = (providerName, currentCost) => {
+    const prevCost = previousResultsRef.current[providerName];
+    if (!prevCost || prevCost === currentCost) return <span className="trend neutral">➖</span>;
+    if (currentCost > prevCost) return <span className="trend up" title="Cost increase">📈</span>;
+    return <span className="trend down" title="Cost decrease">📉</span>;
+  };
+
   return (
-    <div className="page-container">
+    <div className="page-container whatif-page">
       <h2>What-if Scenarios</h2>
-      <p>This is the what-if page content.</p>
+      <p>Adjust parameters in real-time to see how dynamic events impact provider costs.</p>
+
+      <div className="simulator-grid">
+        <div className="left-panel input-form">
+          <h3>Simulation Triggers</h3>
+
+          <div className="form-group">
+            <label htmlFor="traffic">Traffic Level (Users): {inputs.traffic}</label>
+            <input
+              type="range"
+              id="traffic"
+              name="traffic"
+              min="0"
+              max="10000"
+              step="100"
+              value={inputs.traffic}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="form-group row">
+            <div className="input-container">
+              <label htmlFor="region">Region</label>
+              <select name="region" id="region" value={inputs.region} onChange={handleChange}>
+                <option value="us-east-1">US East (Virginia)</option>
+                <option value="eu-west-1">EU (Ireland)</option>
+                <option value="ap-south-1">Asia Pacific (Mumbai)</option>
+              </select>
+            </div>
+            <div className="input-container">
+              <label htmlFor="instanceType">Instance Type</label>
+              <select name="instanceType" id="instanceType" value={inputs.instanceType} onChange={handleChange}>
+                <option value="standard">Standard</option>
+                <option value="compute-optimized">Compute Optimized</option>
+                <option value="memory-optimized">Memory Optimized</option>
+              </select>
+            </div>
+          </div>
+
+          <div className="form-group toggle-group mt-2">
+             <label htmlFor="scaling">Enable Auto-scaling</label>
+             <label className="switch">
+               <input type="checkbox" id="scaling" name="scaling" checked={inputs.scaling} onChange={handleChange} />
+               <span className="slider round"></span>
+             </label>
+          </div>
+        </div>
+
+        <div className="right-panel">
+          <div className="result-card">
+            <div className="result-header">
+              <h3>Live Cost Estimator</h3>
+              {loading && <span style={{fontSize: '0.8rem', color: '#666'}}>Updating...</span>}
+            </div>
+            
+            <div className="cost-breakdown whatif-results">
+              <ul>
+                {results.map(provider => (
+                  <li key={provider.name}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%'}}>
+                      <strong>{provider.name}</strong> 
+                      <span>
+                        ${provider.cost.toFixed(2)}{' '}
+                        {getTrendIcon(provider.name, provider.cost)}
+                      </span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
