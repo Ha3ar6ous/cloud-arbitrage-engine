@@ -1,6 +1,15 @@
 import React from 'react';
 import { MdCheckCircle, MdInfo, MdLightbulb } from 'react-icons/md';
 
+const PROVIDER_URLS = {
+  'AWS': 'https://aws.amazon.com/',
+  'Azure': 'https://azure.microsoft.com/',
+  'GCP': 'https://cloud.google.com/',
+  'DigitalOcean': 'https://www.digitalocean.com/',
+  'Hetzner': 'https://www.hetzner.com/',
+  'Linode': 'https://www.linode.com/'
+};
+
 const ResultCard = ({ result }) => {
   if (!result) return null;
 
@@ -32,9 +41,20 @@ const ResultCard = ({ result }) => {
               <strong>{provider.name}</strong>
               <span className="instance-tag">{provider.instance}</span>
               <span className="score-tag">Score: {provider.score}</span>
+              {PROVIDER_URLS[provider.name] && (
+                <a 
+                  href={PROVIDER_URLS[provider.name]} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="neo-btn visit-btn-mini"
+                >
+                  Visit Website
+                </a>
+              )}
             </div>
 
             <p className="rank-reason"><MdInfo className="icon-inline" /> {provider.reason}</p>
+
 
             <div className="cost-breakdown-grid">
               <div className="cost-item">

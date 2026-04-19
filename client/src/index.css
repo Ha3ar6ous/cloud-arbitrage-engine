@@ -1166,19 +1166,20 @@ input:checked + .slider:before {
 
 /* --- Landing Page Layout Additions --- */
 .hero-ticker {
-  background: #fdf2f8; /* Soft pinkish background */
-  color: #db2777; /* Deeper pink text */
+  background: #ecfdf5;
+  /* Soft light green background */
+  color: #059669;
+  /* Strong green text */
   padding: 6px 14px;
-  border-radius: 50px; /* Capsule style */
+  border-radius: 50px;
   font-family: 'Space Mono', monospace;
   font-weight: 800;
   display: inline-block;
   margin-bottom: 2rem;
-  border: 2px solid #db2777;
-  box-shadow: 3px 3px 0px #db2777;
+  border: 2px solid #059669;
+  box-shadow: 3px 3px 0px #059669;
   font-size: 0.9rem;
 }
-
 .ticker-value {
   display: inline-block;
   min-width: 60px;
@@ -1370,8 +1371,8 @@ input:checked + .slider:before {
   align-items: center;
   justify-content: space-between;
   gap: 4rem;
-  padding: 1.5rem 2rem 4rem; /* Reduced top padding from 4rem to 1.5rem */
-  min-height: calc(100vh - 120px); /* Fill screen minus navbar/marquee */
+  padding: 0.5rem 2rem 2rem; /* Even tighter to avoid cutoff */
+  min-height: calc(100vh - 160px); /* Reduced height requirement */
 }
 
 .hero-text-content {
@@ -1411,6 +1412,18 @@ input:checked + .slider:before {
 .hero-cta {
   font-size: 1.2rem;
   padding: 1rem 2rem;
+}
+
+.visit-btn-mini {
+  padding: 4px 10px;
+  font-size: 0.7rem;
+  margin-left: auto;
+  text-decoration: none;
+  background: #1a1a1a !important;
+  color: #fff !important;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 4px;
 }
 
 .provider-logos-hero {

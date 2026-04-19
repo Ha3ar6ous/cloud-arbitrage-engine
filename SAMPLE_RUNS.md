@@ -1,4 +1,4 @@
-# Sample Execution Runs: Cloud Arbitrage Engine 📊
+# Sample Execution Runs: Cloud Arbitrage Engine 
 
 This guide provides realistic scenarios to demonstrate how the platform processes inputs to generate strategic cloud recommendations.
 
@@ -34,7 +34,7 @@ This guide provides realistic scenarios to demonstrate how the platform processe
   - With Auto-Scaling **ON**, it predicts the cost of horizontal scaling (adding instances).
   - With Auto-Scaling **OFF**, it predicts failure/latency risks.
 - **Expected Output**:
-  - **Visual Indicator**: 📉 (Savings Opportunity)
+  - **Visual Indicator**:  (Savings Opportunity)
   - **Recommendation**: "Switching to Reserved Instances (RI) for this sustained traffic level will save you ₹12,400/mo compared to On-Demand scaling behavior."
 
 ---
@@ -57,7 +57,7 @@ This guide provides realistic scenarios to demonstrate how the platform processe
 
 ---
 
-## 🛠️ Summary of Calculation Factors
+##  Summary of Calculation Factors
 
 | Factor | Influence | Module Impact |
 | :--- | :--- | :--- |

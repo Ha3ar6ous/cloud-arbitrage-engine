@@ -24,8 +24,8 @@ const LoginPage = () => {
     <div className="login-page-container">
       <div className="login-card neo-box">
         <h2>System Login</h2>
-        <form onSubmit={handleLogin}>
-          <div className="input-group">
+        <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <div className="input-group" style={{ width: '100%' }}>
             <label htmlFor="username">Username</label>
             <input
               type="text"
@@ -36,7 +36,7 @@ const LoginPage = () => {
               required
             />
           </div>
-          <button type="submit" className="neo-btn primary-btn">
+          <button type="submit" className="neo-btn primary-btn mt-3" style={{ width: 'fit-content' }}>
             <MdLogin /> Continue to Workspace
           </button>
         </form>

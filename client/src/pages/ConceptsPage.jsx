@@ -1,48 +1,54 @@
 import React from 'react';
-import { MdSchool, MdBookmark } from 'react-icons/md';
+import { MdSchool, MdCheckCircle, MdCode, MdSecurity as MdSecurityIcon, MdAnalytics } from 'react-icons/md';
 
 const ConceptsPage = () => {
   const modules = [
     {
-      title: "Module 1: Introduction to Cloud Computing",
-      topics: [
-        "1.1 Evolution of Cloud Computing: Comparison between Cluster, Grid and Cloud Computing. Benefits & Challenges.",
-        "1.2 Deployment Models: Private, Public, Community, and Hybrid cloud types.",
-        "Service Models: SaaS (Software), PaaS (Platform), IaaS (Infrastructure), XaaS (Anything), DBaaS, AIaaS, FaaS. The SPI Model and Service Abstraction.",
-        "1.3 Scaling: Vertical (Scale-Up) and Horizontal (Scale-Out) scaling strategies."
+      title: "Module 1: Service Models & Scaling",
+      icon: <MdAnalytics />,
+      content: [
+        {
+          topic: "IaaS & PaaS Delivery Models",
+          theory: "Infrastructure as a Service provides virtualized computing resources (CPU/RAM/Storage) over the internet.",
+          implementation: "Our 'Simulator' handles IaaS configurations where you pick raw hardware specs to predict monthly billing."
+        },
+        {
+          topic: "Horizontal vs Vertical Scaling",
+          theory: "Vertical scaling increases the power of a single node; Horizontal scaling adds more nodes to a cluster.",
+          implementation: "The 'What-If' module simulates Horizontal Scaling costs by adding instance units based on user traffic sliders."
+        }
       ]
     },
     {
-      title: "Module 2: Virtualization",
-      topics: [
-        "2.1 Types of Virtualization: CPU, Storage, Memory, OS, and Hardware. Abstraction of physical computing resources.",
-        "2.2 Hypervisors: Type 1 (Bare Metal) and Type 2 (Hosted) Hypervisors. HLL Virtual Machines and Emulation.",
-        "2.3 Security: Specific threats and vulnerabilities in virtualized environments.",
-        "2.4 Resource Management: Pooling, Sharing, and Provisioning logic."
+      title: "Module 4: Provider Architectures",
+      icon: <MdCode />,
+      content: [
+        {
+          topic: "Hyperscaler Comparison",
+          theory: "Analyzing the architecture, uptime, and pricing regions of major clouds like AWS, Azure, and GCP.",
+          implementation: "The 'Comparison Dashboard' fetches real-world regional data (ap-south-1) to grade these giants on performance and cost."
+        }
       ]
     },
     {
-      title: "Module 3: Containerization",
-      topics: [
-        "3.1 Architecture: Comparison of Image vs Container. Virtualization vs Containerization efficiency.",
-        "3.2 Docker: Dockerfile structure, Images, and DockerHub registry ecosystem.",
-        "3.3 Orchestration: Kubernetes basics - Pods, ReplicaSets, Deployments, and YAML configuration."
-      ]
-    },
-    {
-      title: "Module 4: Architecture of Cloud and IoT",
-      topics: [
-        "4.1 Platforms: eucalyptus and OpenStack architecture and operation modes.",
-        "4.2 Cloud Giants: Architecture and comparison of AWS (Amazon), Azure (Microsoft), and Google App Engine.",
-        "4.3 IoT Integration: Role of cloud in IoT, Edge Computing, and Fog Computing architectures."
-      ]
-    },
-    {
-      title: "Module 5: Security & Cost Management",
-      topics: [
-        "5.1 Security Principles: Identity & Access Management (IAM), Design Principles, and Management Frameworks.",
-        "5.2 Host Security: Comparative security in SaaS, PaaS, and IaaS layers.",
-        "5.3 Cost Optimization: Cloud budget management, Reserved vs Spot instances, and FinOps principles."
+      title: "Module 5: Security & Cost Optimization",
+      icon: <MdSecurityIcon />,
+      content: [
+        {
+          topic: "Cloud Cost Optimization (FinOps)",
+          theory: "The practice of bringing financial accountability to the variable spend model of cloud.",
+          implementation: "This entire engine is a FinOps tool. It identifies 'Arbitrage' opportunities—switching providers to save money automatically."
+        },
+        {
+          topic: "Reserved vs Spot Instances",
+          theory: "Reserved instances are prepaid for stability; Spot instances are spare capacity at 70-90% discount.",
+          implementation: "Our recommendation logic suggests switching to 'Spot Instances' if your workload is interruptible, maximizing savings."
+        },
+        {
+          topic: "Security Design Principles",
+          theory: "Protecting data and hosts through identity management, encryption, and region-locked compliance.",
+          implementation: "The 'Security Audit' page evaluates your setup against threats and provides a weighted safety score."
+        }
       ]
     }
   ];
@@ -50,64 +56,100 @@ const ConceptsPage = () => {
   return (
     <div className="page-container concepts-page">
       <div className="flex-align mb-1">
-        <MdSchool className="icon-inline" style={{ fontSize: '2rem', color: '#22c55e' }} />
-        <h2 style={{ margin: 0 }}>Syllabus Concepts</h2>
+        <MdSchool className="icon-inline" style={{ fontSize: '2.5rem', color: '#22c55e' }} />
+        <div>
+          <h2 style={{ margin: 0 }}>Syllabus Implementation Mapping</h2>
+          <p style={{ margin: 0, color: '#666' }}>Bridging academic theory with this platform's practical features.</p>
+        </div>
       </div>
-      <p className="mb-2">A concise summary of key cloud computing concepts directly from the course syllabus.</p>
+      <hr className="mb-2" style={{ border: 'none', borderTop: '2px solid #1a1a1a' }} />
 
-      <div className="concepts-grid">
+      <div className="concepts-vertical-grid">
         {modules.map((m, idx) => (
-          <div key={idx} className="concept-module neo-box">
-            <h3 className="module-title">
-              <MdBookmark className="icon-tiny" /> {m.title}
-            </h3>
-            <ul className="topic-list">
-              {m.topics.map((t, i) => (
-                <li key={i}>{t}</li>
+          <div key={idx} className="concept-module-large neo-box">
+            <div className="module-header-main">
+              <span className="module-idx">0{idx + 1}</span>
+              {m.icon}
+              <h3>{m.title}</h3>
+            </div>
+            
+            <div className="topics-container">
+              {m.content.map((item, i) => (
+                <div key={i} className="topic-block neo-box mini">
+                  <div className="topic-header">
+                    <MdCheckCircle className="icon-success" />
+                    <strong>{item.topic}</strong>
+                  </div>
+                  <div className="topic-details">
+                    <p className="theory-text"><strong>Theory:</strong> {item.theory}</p>
+                    <p className="impl-text"><strong>In This Project:</strong> {item.implementation}</p>
+                  </div>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         ))}
       </div>
 
       <style dangerouslySetInnerHTML={{ __html: `
-        .concepts-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-          gap: 20px;
+        .concepts-vertical-grid {
+          display: flex;
+          flex-direction: column;
+          gap: 30px;
         }
-        .concept-module {
+        .concept-module-large {
           background: #fff;
-          padding: 20px;
+          padding: 25px;
         }
-        .module-title {
-          font-size: 1.25rem;
-          margin-bottom: 15px;
-          color: #1a1a1a;
-          border-bottom: 2px solid #22c55e;
-          padding-bottom: 8px;
+        .module-header-main {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+          margin-bottom: 25px;
+          border-bottom: 3px solid #1a1a1a;
+          padding-bottom: 10px;
+        }
+        .module-header-main h3 {
+          margin: 0;
+          text-transform: uppercase;
+          font-size: 1.5rem;
+        }
+        .module-idx {
+          background: #1a1a1a;
+          color: #22c55e;
+          padding: 2px 10px;
+          font-weight: 900;
+          font-size: 1.2rem;
+          transform: rotate(-5deg);
+        }
+        .topic-block {
+          margin-bottom: 20px;
+          background: #fafafa;
+        }
+        .topic-header {
           display: flex;
           align-items: center;
           gap: 10px;
-        }
-        .topic-list {
-          list-style: none;
-          padding: 0;
-        }
-        .topic-list li {
+          padding-bottom: 10px;
+          border-bottom: 1px dashed #ccc;
           margin-bottom: 10px;
-          font-size: 0.95rem;
-          color: #444;
-          line-height: 1.4;
-          position: relative;
-          padding-left: 15px;
+          font-size: 1.1rem;
         }
-        .topic-list li::before {
-          content: '•';
-          position: absolute;
-          left: 0;
+        .theory-text {
+          font-size: 0.95rem;
+          color: #555;
+          margin-bottom: 8px;
+        }
+        .impl-text {
+          font-size: 0.95rem;
+          color: #1a1a1a;
+          padding: 8px;
+          background: #f0fdf4;
+          border-left: 4px solid #22c55e;
+          font-weight: 600;
+        }
+        .icon-success {
           color: #22c55e;
-          font-weight: bold;
         }
       `}} />
     </div>
