@@ -1492,6 +1492,7 @@ input:checked + .slider:before {
   }
   .hero-subtitle {
     margin: 0 auto 2.5rem;
+  }
 }
 
 /* --- Global Live Indicators --- */
@@ -1518,7 +1519,3 @@ input:checked + .slider:before {
   70% { transform: scale(1.2); opacity: 0.8; box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
   100% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
 }
-
-
-
-
