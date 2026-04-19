@@ -4,6 +4,7 @@ A high-performance, full-stack cloud cost optimization platform built with the M
 
 ---
 ## Since the last domain was flagging the site with a phishing threat , changed its name to :    
+https://cloud-chanakya.vercel.app/
 https://cloud-labca-project.vercel.app/
 
 ##  Theory & Syllabus Mapping
