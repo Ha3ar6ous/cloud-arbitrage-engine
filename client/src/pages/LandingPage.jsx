@@ -37,10 +37,7 @@ const LandingPage = () => {
         <section className="hero-section-wrapper">
           <div className="hero-text-content">
             <div className="hero-badges">
-              <div className="live-indicator">
-                <span className="live-blinker"></span>
-              </div>
-              <div className="hero-ticker neo-box">
+              <div className="hero-ticker">
                 SAVINGS: <span className="ticker-value">₹{ticker}</span>/hr
               </div>
             </div>
