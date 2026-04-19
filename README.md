@@ -3,6 +3,8 @@
 A high-performance, full-stack cloud cost optimization platform built with the MERN stack. Designed for developers and startups to simulate workloads, compare global cloud providers in INR, and uncover deep financial optimizations using smart arbitrage logic.
 
 ---
+## Since the last domain was flagging the site with a phishing threat , changed its name to :    
+https://cloud-labca-project.vercel.app/
 
 ##  Theory & Syllabus Mapping
 
