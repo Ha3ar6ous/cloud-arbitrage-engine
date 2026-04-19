@@ -110,61 +110,6 @@
     "reliability_score": 99.95
   },
   {
-    "provider": "AWS",
-    "instance": "m5.large",
-    "cpu": 2,
-    "ram": 8,
-    "storage": 100,
-    "region": "ap-south-1",
-    "price_inr_per_hour": 14.30,
-    "performance_score": 85,
-    "reliability_score": 99.99
-  },
-  {
-    "provider": "AWS",
-    "instance": "c5.large",
-    "cpu": 2,
-    "ram": 4,
-    "storage": 50,
-    "region": "ap-south-1",
-    "price_inr_per_hour": 12.60,
-    "performance_score": 92,
-    "reliability_score": 99.99
-  },
-  {
-    "provider": "AWS",
-    "instance": "r5.large",
-    "cpu": 2,
-    "ram": 16,
-    "storage": 100,
-    "region": "ap-south-1",
-    "price_inr_per_hour": 18.70,
-    "performance_score": 83,
-    "reliability_score": 99.99
-  },
-  {
-    "provider": "AWS",
-    "instance": "m5.xlarge",
-    "cpu": 4,
-    "ram": 16,
-    "storage": 200,
-    "region": "eu-west-1",
-    "price_inr_per_hour": 28.50,
-    "performance_score": 89,
-    "reliability_score": 99.99
-  },
-  {
-    "provider": "AWS",
-    "instance": "c5.xlarge",
-    "cpu": 4,
-    "ram": 8,
-    "storage": 100,
-    "region": "eu-west-1",
-    "price_inr_per_hour": 25.20,
-    "performance_score": 93,
-    "reliability_score": 99.99
-  },
-  {
     "provider": "Azure",
     "instance": "B1s",
     "cpu": 1,
@@ -199,28 +144,6 @@
   },
   {
     "provider": "Azure",
-    "instance": "D2s_v3",
-    "cpu": 2,
-    "ram": 8,
-    "storage": 50,
-    "region": "us-east-1",
-    "price_inr_per_hour": 14.20,
-    "performance_score": 84,
-    "reliability_score": 99.99
-  },
-  {
-    "provider": "Azure",
-    "instance": "D4s_v3",
-    "cpu": 4,
-    "ram": 16,
-    "storage": 100,
-    "region": "us-east-1",
-    "price_inr_per_hour": 28.40,
-    "performance_score": 88,
-    "reliability_score": 99.99
-  },
-  {
-    "provider": "Azure",
     "instance": "B1s",
     "cpu": 1,
     "ram": 1,
@@ -240,83 +163,6 @@
     "price_inr_per_hour": 6.10,
     "performance_score": 72,
     "reliability_score": 99.90
-  },
-  {
-    "provider": "Azure",
-    "instance": "B4ms",
-    "cpu": 4,
-    "ram": 16,
-    "storage": 100,
-    "region": "ap-south-1",
-    "price_inr_per_hour": 22.00,
-    "performance_score": 78,
-    "reliability_score": 99.90
-  },
-  {
-    "provider": "Azure",
-    "instance": "D2s_v3",
-    "cpu": 2,
-    "ram": 8,
-    "storage": 50,
-    "region": "ap-south-1",
-    "price_inr_per_hour": 12.80,
-    "performance_score": 82,
-    "reliability_score": 99.95
-  },
-  {
-    "provider": "Azure",
-    "instance": "D4s_v3",
-    "cpu": 4,
-    "ram": 16,
-    "storage": 100,
-    "region": "ap-south-1",
-    "price_inr_per_hour": 25.60,
-    "performance_score": 86,
-    "reliability_score": 99.95
-  },
-  {
-    "provider": "Azure",
-    "instance": "F2s_v2",
-    "cpu": 2,
-    "ram": 4,
-    "storage": 30,
-    "region": "ap-south-1",
-    "price_inr_per_hour": 12.10,
-    "performance_score": 90,
-    "reliability_score": 99.95
-  },
-  {
-    "provider": "Azure",
-    "instance": "E2s_v3",
-    "cpu": 2,
-    "ram": 16,
-    "storage": 100,
-    "region": "ap-south-1",
-    "price_inr_per_hour": 18.90,
-    "performance_score": 81,
-    "reliability_score": 99.95
-  },
-  {
-    "provider": "Azure",
-    "instance": "D8s_v3",
-    "cpu": 8,
-    "ram": 32,
-    "storage": 200,
-    "region": "eu-west-1",
-    "price_inr_per_hour": 58.00,
-    "performance_score": 91,
-    "reliability_score": 99.99
-  },
-  {
-    "provider": "Azure",
-    "instance": "F4s_v2",
-    "cpu": 4,
-    "ram": 8,
-    "storage": 50,
-    "region": "eu-west-1",
-    "price_inr_per_hour": 24.80,
-    "performance_score": 92,
-    "reliability_score": 99.99
   },
   {
     "provider": "GCP",
@@ -353,28 +199,6 @@
   },
   {
     "provider": "GCP",
-    "instance": "e2-standard-4",
-    "cpu": 4,
-    "ram": 16,
-    "storage": 100,
-    "region": "us-east-1",
-    "price_inr_per_hour": 20.00,
-    "performance_score": 85,
-    "reliability_score": 99.99
-  },
-  {
-    "provider": "GCP",
-    "instance": "e2-standard-8",
-    "cpu": 8,
-    "ram": 32,
-    "storage": 200,
-    "region": "us-east-1",
-    "price_inr_per_hour": 40.00,
-    "performance_score": 90,
-    "reliability_score": 99.99
-  },
-  {
-    "provider": "GCP",
     "instance": "e2-micro",
     "cpu": 2,
     "ram": 1,
@@ -396,102 +220,80 @@
     "reliability_score": 99.90
   },
   {
-    "provider": "GCP",
-    "instance": "e2-medium",
-    "cpu": 2,
-    "ram": 4,
+    "provider": "DigitalOcean",
+    "instance": "s-1vcpu-1gb",
+    "cpu": 1,
+    "ram": 1,
+    "storage": 25,
+    "region": "ap-south-1",
+    "price_inr_per_hour": 0.45,
+    "performance_score": 60,
+    "reliability_score": 99.9
+  },
+  {
+    "provider": "DigitalOcean",
+    "instance": "s-1vcpu-2gb",
+    "cpu": 1,
+    "ram": 2,
     "storage": 50,
     "region": "ap-south-1",
-    "price_inr_per_hour": 4.50,
+    "price_inr_per_hour": 0.90,
+    "performance_score": 65,
+    "reliability_score": 99.9
+  },
+  {
+    "provider": "DigitalOcean",
+    "instance": "s-2vcpu-4gb",
+    "cpu": 2,
+    "ram": 4,
+    "storage": 80,
+    "region": "ap-south-1",
+    "price_inr_per_hour": 1.80,
     "performance_score": 75,
-    "reliability_score": 99.95
+    "reliability_score": 99.9
   },
   {
-    "provider": "GCP",
-    "instance": "e2-standard-4",
-    "cpu": 4,
-    "ram": 16,
-    "storage": 100,
+    "provider": "Hetzner",
+    "instance": "cx11",
+    "cpu": 1,
+    "ram": 2,
+    "storage": 20,
     "region": "ap-south-1",
-    "price_inr_per_hour": 18.00,
-    "performance_score": 84,
-    "reliability_score": 99.95
+    "price_inr_per_hour": 0.35,
+    "performance_score": 62,
+    "reliability_score": 99.9
   },
   {
-    "provider": "GCP",
-    "instance": "e2-standard-8",
-    "cpu": 8,
-    "ram": 32,
-    "storage": 200,
-    "region": "ap-south-1",
-    "price_inr_per_hour": 36.00,
-    "performance_score": 89,
-    "reliability_score": 99.95
-  },
-  {
-    "provider": "GCP",
-    "instance": "n2-standard-2",
+    "provider": "Hetzner",
+    "instance": "cpx11",
     "cpu": 2,
-    "ram": 8,
-    "storage": 80,
+    "ram": 2,
+    "storage": 40,
     "region": "ap-south-1",
-    "price_inr_per_hour": 13.50,
-    "performance_score": 86,
-    "reliability_score": 99.99
+    "price_inr_per_hour": 0.45,
+    "performance_score": 70,
+    "reliability_score": 99.9
   },
   {
-    "provider": "GCP",
-    "instance": "c2-standard-4",
-    "cpu": 4,
-    "ram": 16,
-    "storage": 100,
+    "provider": "Linode",
+    "instance": "nanode-1gb",
+    "cpu": 1,
+    "ram": 1,
+    "storage": 25,
     "region": "ap-south-1",
-    "price_inr_per_hour": 24.00,
-    "performance_score": 94,
-    "reliability_score": 99.99
+    "price_inr_per_hour": 0.45,
+    "performance_score": 61,
+    "reliability_score": 99.9
   },
   {
-    "provider": "GCP",
-    "instance": "n2-standard-4",
-    "cpu": 4,
-    "ram": 16,
-    "storage": 100,
-    "region": "eu-west-1",
-    "price_inr_per_hour": 26.50,
-    "performance_score": 87,
-    "reliability_score": 99.99
-  },
-  {
-    "provider": "GCP",
-    "instance": "c2-standard-8",
-    "cpu": 8,
-    "ram": 32,
-    "storage": 200,
-    "region": "eu-west-1",
-    "price_inr_per_hour": 52.00,
-    "performance_score": 95,
-    "reliability_score": 99.99
-  },
-  {
-    "provider": "AWS",
-    "instance": "t3.medium",
-    "cpu": 2,
-    "ram": 4,
+    "provider": "Linode",
+    "instance": "linode-2gb",
+    "cpu": 1,
+    "ram": 2,
     "storage": 50,
-    "region": "eu-west-1",
-    "price_inr_per_hour": 6.80,
-    "performance_score": 78,
-    "reliability_score": 99.99
-  },
-  {
-    "provider": "AWS",
-    "instance": "t3.large",
-    "cpu": 2,
-    "ram": 8,
-    "storage": 80,
-    "region": "eu-west-1",
-    "price_inr_per_hour": 13.60,
-    "performance_score": 82,
-    "reliability_score": 99.99
+    "region": "ap-south-1",
+    "price_inr_per_hour": 0.90,
+    "performance_score": 66,
+    "reliability_score": 99.9
   }
 ]

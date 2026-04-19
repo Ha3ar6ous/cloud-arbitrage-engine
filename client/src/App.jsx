@@ -9,6 +9,7 @@ import SimulatorPage from './pages/SimulatorPage';
 import DashboardPage from './pages/DashboardPage';
 import WhatIfPage from './pages/WhatIfPage';
 import SecurityPage from './pages/SecurityPage';
+import ConceptsPage from './pages/ConceptsPage';
 
 function App() {
   return (
@@ -22,11 +23,13 @@ function App() {
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/what-if" element={<WhatIfPage />} />
             <Route path="/security" element={<SecurityPage />} />
+            <Route path="/concepts" element={<ConceptsPage />} />
           </Route>
         </Routes>
       </Router>
     </AuthProvider>
   );
 }
+
 
 export default App;

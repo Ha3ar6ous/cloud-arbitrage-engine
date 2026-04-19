@@ -23,8 +23,14 @@ const RiskPanel = ({ data, loading }) => {
   return (
     <div className="risk-panel neo-box">
       <div className="risk-header">
-        <h3>Security & Reliability Audit</h3>
-        <span className="audit-badge">Generated Live</span>
+        <div className="flex-align">
+          <h3>Security & Reliability Audit</h3>
+          <div className="live-indicator">
+            <span className="live-blinker"></span>
+            LIVE
+          </div>
+        </div>
+        <span className="audit-badge">Scraping cloud datasets...</span>
       </div>
 
       <div className="score-container">
