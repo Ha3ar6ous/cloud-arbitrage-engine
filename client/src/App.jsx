@@ -1,21 +1,30 @@
-import { useEffect } from 'react'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
+import ProtectedRoute from './components/ProtectedRoute';
+import Layout from './components/Layout';
+import LandingPage from './pages/LandingPage';
+import SimulatorPage from './pages/SimulatorPage';
+import DashboardPage from './pages/DashboardPage';
+import WhatIfPage from './pages/WhatIfPage';
+import SecurityPage from './pages/SecurityPage';
 
 function App() {
-  useEffect(() => {
-    fetch('http://localhost:5000/ping')
-      .then((res) => res.json())
-      .then((data) => {
-        console.log('Counter from backend:', data.counter)
-      })
-      .catch((err) => console.error(err))
-  }, [])
-
   return (
-    <div>
-      <h1>React + Express Test</h1>
-      <p>Check backend terminal </p>
-    </div>
-  )
+    <AuthProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route element={<ProtectedRoute><Layout /></ProtectedRoute>}>
+            <Route path="/simulator" element={<SimulatorPage />} />
+            <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/what-if" element={<WhatIfPage />} />
+            <Route path="/security" element={<SecurityPage />} />
+          </Route>
+        </Routes>
+      </Router>
+    </AuthProvider>
+  );
 }
 
-export default App
+export default App;

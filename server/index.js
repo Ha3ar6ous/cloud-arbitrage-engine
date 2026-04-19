@@ -1,5 +1,7 @@
 const express = require('express')
 const cors = require('cors')
+const simulateRoute = require('./routes/simulate')
+const compareRoute = require('./routes/compare')
 
 const app = express()
 app.use(cors())
@@ -12,6 +14,9 @@ app.get('/ping', (req, res) => {
   console.log('Counter:', counter)
   res.json({ counter })
 })
+
+app.use('/api/simulate', simulateRoute)
+app.use('/api/compare', compareRoute)
 
 const PORT = 5000
 app.listen(PORT, () => {
