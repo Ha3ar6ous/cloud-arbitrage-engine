@@ -125,28 +125,35 @@ const WhatIfPage = () => {
         </div>
 
         <div className="right-panel">
-          <div className="neo-box result-card">
-            <div className="result-header">
-              <h3>Live Cost Estimator (INR)</h3>
-              {loading && <span className="loading-badge">Updating...</span>}
+          {loading && results.length === 0 ? (
+            <div className="loading-card neo-box">
+              <div className="spinner"></div>
+              <p className="loading-msg">Calculating costs...</p>
             </div>
-            
-            <div className="cost-breakdown whatif-results">
-              <ul>
-                {results.map(provider => (
-                  <li key={provider.name}>
-                    <div className="whatif-row">
-                      <strong>{provider.name}</strong> 
-                      <span>
-                        ₹{provider.cost.toFixed(2)}{' '}
-                        {getTrendIcon(provider.name, provider.cost)}
-                      </span>
-                    </div>
-                  </li>
-                ))}
-              </ul>
+          ) : (
+            <div className="neo-box result-card">
+              <div className="result-header">
+                <h3>Live Cost Estimator (INR)</h3>
+                {loading && <span className="loading-badge">Updating...</span>}
+              </div>
+              
+              <div className="cost-breakdown whatif-results">
+                <ul>
+                  {results.map(provider => (
+                    <li key={provider.name}>
+                      <div className="whatif-row">
+                        <strong>{provider.name}</strong> 
+                        <span>
+                          ₹{provider.cost.toFixed(2)}{' '}
+                          {getTrendIcon(provider.name, provider.cost)}
+                        </span>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </div>

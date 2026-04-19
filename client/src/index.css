@@ -775,3 +775,241 @@ input:checked + .slider:before {
 .mt-2 {
   margin-top: 1rem;
 }
+
+/* --- Provider Rank Cards --- */
+.top-providers {
+  margin-bottom: 1.5rem;
+}
+
+.top-providers h4 {
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+
+.provider-rank {
+  margin-bottom: 1rem;
+  padding: 14px;
+}
+
+.provider-rank.top-pick {
+  border-color: #22c55e;
+  background: #f0fdf4;
+}
+
+.rank-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.rank-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: #1a1a1a;
+  color: #fff;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.provider-rank.top-pick .rank-badge {
+  background: #22c55e;
+}
+
+.instance-tag {
+  font-size: 0.8rem;
+  background: #f5f5f5;
+  border: 1px solid #ccc;
+  padding: 2px 8px;
+  border-radius: 4px;
+  color: #555;
+}
+
+.score-tag {
+  margin-left: auto;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.rank-reason {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rank-reason .icon-inline {
+  color: #1a73e8;
+}
+
+/* --- Cost Breakdown Grid --- */
+.cost-breakdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.cost-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px;
+  background: #f5f5f5;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+}
+
+.cost-item.total {
+  background: #1a1a1a;
+  color: #fff;
+  border-color: #1a1a1a;
+}
+
+.cost-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.cost-value {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+/* --- Info Tooltips --- */
+.tooltip-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 4px;
+  cursor: help;
+}
+
+.info-icon {
+  font-size: 0.95rem;
+  color: #999;
+  transition: color 0.15s;
+}
+
+.tooltip-wrapper:hover .info-icon {
+  color: #22c55e;
+}
+
+.tooltip-text {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1a1a1a;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 0.78rem;
+  font-weight: 400;
+  white-space: nowrap;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.tooltip-wrapper:hover .tooltip-text {
+  display: block;
+}
+
+/* --- Preset Bar --- */
+.preset-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+}
+
+.preset-label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.preset-btn {
+  padding: 6px 14px;
+  font-size: 0.85rem;
+}
+
+/* --- Loading Card --- */
+.loading-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  gap: 1.5rem;
+  min-height: 200px;
+}
+
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 4px solid #e5e5e5;
+  border-top: 4px solid #22c55e;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-msg {
+  font-weight: 600;
+  color: #555;
+  font-size: 1rem;
+  animation: fadeInOut 0.5s ease-in-out;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(4px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Why Section --- */
+.why-section {
+  background: #fffbeb;
+  border-color: #eab308;
+  padding: 14px;
+  margin-bottom: 1.5rem;
+}
+
+.why-section h4 {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.why-section p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+.why-detail {
+  margin-top: 6px;
+  font-size: 0.88rem;
+}
+
+.icon-inline.bulb {
+  color: #eab308;
+  font-size: 1.2rem;
+}
