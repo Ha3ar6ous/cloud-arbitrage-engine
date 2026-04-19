@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { MdTrendingUp, MdTrendingDown, MdTrendingFlat } from 'react-icons/md';
 import pricingData from '../data/pricingData.json';
+import API_BASE_URL from '../api';
 
 const WhatIfPage = () => {
   const [inputs, setInputs] = useState({
@@ -33,7 +34,7 @@ const WhatIfPage = () => {
           pricingData
         };
 
-        const response = await fetch('http://localhost:5000/api/whatif', {
+        const response = await fetch(`${API_BASE_URL}/api/whatif`, {
           method: 'POST',
           headers: { 
             'Content-Type': 'application/json',

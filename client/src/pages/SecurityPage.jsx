@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import RiskPanel from '../components/RiskPanel';
 import { AuthContext } from '../context/AuthContext';
 import { MdShield, MdPublic, MdLock, MdLocationOn, MdCloudCircle, MdNewspaper, MdWarning } from 'react-icons/md';
+import API_BASE_URL from '../api';
 
 const INCIDENTS = {
   AWS: [
@@ -51,7 +52,7 @@ const SecurityPage = () => {
     const fetchSecurityInsights = async () => {
       setLoading(true);
       try {
-        const response = await fetch('http://localhost:5000/api/security', {
+        const response = await fetch(`${API_BASE_URL}/api/security`, {
           method: 'POST',
           headers: { 
             'Content-Type': 'application/json',

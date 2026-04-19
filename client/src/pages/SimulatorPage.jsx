@@ -4,6 +4,7 @@ import ResultCard from '../components/ResultCard';
 import { AuthContext } from '../context/AuthContext';
 import { MdRocketLaunch, MdTrendingUp, MdWeb } from 'react-icons/md';
 import pricingData from '../data/pricingData.json';
+import API_BASE_URL from '../api';
 
 const PRESETS = {
   startup: {
@@ -58,7 +59,7 @@ const SimulatorPage = () => {
         pricingData
       };
 
-      const response = await fetch('http://localhost:5000/api/simulate', {
+      const response = await fetch(`${API_BASE_URL}/api/simulate`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

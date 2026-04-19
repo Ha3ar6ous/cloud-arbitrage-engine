@@ -19,6 +19,14 @@ connectDB();
 app.use(cors())
 app.use(express.json())
 
+app.get('/', (req, res) => {
+  res.json({ 
+    status: 'online', 
+    message: 'Cloud Arbitrage Engine API is running',
+    version: '1.0.0'
+  })
+})
+
 app.get('/ping', (req, res) => {
   res.json({ message: 'Pong' })
 })

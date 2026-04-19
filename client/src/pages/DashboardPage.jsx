@@ -3,6 +3,7 @@ import ProviderTable from '../components/ProviderTable';
 import CostChart from '../components/CostChart';
 import { AuthContext } from '../context/AuthContext';
 import pricingData from '../data/pricingData.json';
+import API_BASE_URL from '../api';
 
 const DashboardPage = () => {
   const [data, setData] = useState([]);
@@ -13,7 +14,7 @@ const DashboardPage = () => {
   useEffect(() => {
     const fetchComparisonData = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/compare', {
+        const response = await fetch(`${API_BASE_URL}/api/compare`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
+import API_BASE_URL from '../api';
 
 export const AuthContext = createContext();
 
@@ -11,7 +12,7 @@ export const AuthProvider = ({ children }) => {
       const storedUser = localStorage.getItem('username');
       if (storedUser) {
         try {
-          const res = await fetch(`http://localhost:5000/api/auth/me`, {
+          const res = await fetch(`${API_BASE_URL}/api/auth/me`, {
             headers: { 'x-username': storedUser }
           });
           if (res.ok) {
@@ -32,7 +33,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (username) => {
     try {
-      const res = await fetch('http://localhost:5000/api/auth/login', {
+      const res = await fetch(`${API_BASE_URL}/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username })
