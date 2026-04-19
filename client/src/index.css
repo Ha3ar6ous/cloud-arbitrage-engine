@@ -1,6 +1,6 @@
 /* ========================================
    NEOBRUTAL DESIGN SYSTEM 
-   Cloud Arbitrage Engine
+   Cloud Chanakya
    ======================================== */
 
 /* --- Reset & Base --- */
@@ -1166,7 +1166,7 @@ input:checked + .slider:before {
 
 /* --- Landing Page Layout Additions --- */
 .hero-ticker {
-  background: #1072e3c3; /* Switched to Pink for variation */
+  background: #00580a; /* Switched to Pink for variation */
   color: #fff;
   padding: 4px 12px; /* Thinner */
   border-radius: 50px;
